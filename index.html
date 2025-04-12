@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Utility</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="static\css\styles.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">AI Text Utility</h1>
+        <p class="text-center text-gray-600 mb-4">Enter your text to get a 3-line summary and 5 keywords!</p>
+        <form method="POST" id="textForm">
+            <textarea name="text" class="w-full h-40 p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Paste your text here..." required></textarea>
+            {% if error %}
+            <p class="text-red-500 text-center mt-2">{{ error }}</p>
+            {% endif %}
+            <button type="submit" class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">Analyze Text</button>
+        </form>
+    </div>
+    <div id="loading" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-indigo-600"></div>
+    </div>
+    <script src="static\js\scripts.js"></script>
+</body>
+</html>

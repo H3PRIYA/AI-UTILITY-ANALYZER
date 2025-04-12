@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - AI Text Utility</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+        <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">Analysis Results</h1>
+        {% if was_truncated %}
+        <p class="text-yellow-600 text-center mb-4">Warning: Input was very long (>700 words) and truncated for summary.</p>
+        {% endif %}
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Original Text</h2>
+        <pre class="bg-gray-900 text-white p-4 rounded-lg"><code class="language-text">{{ text }}</code></pre>
+        <h2 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Summary</h2>
+        <pre class="bg-gray-900 text-white p-4 rounded-lg"><code class="language-text">{{ summary }}</code></pre>
+        <h2 class="text-xl font-semibold text-gray-800 mt-6 mb-2">Keywords</h2>
+        <p class="bg-gray-900 text-white p-4 rounded-lg">{{ keywords | join(", ") }}</p>
+        <div class="flex justify-between mt-6">
+            <button onclick="copyResults()" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300">Copy Results</button>
+            <a href="/" class="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-300">Analyze Another</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="/static/js/scripts.js"></script>
+    <script>
+        function copyResults() {
+            const text = `Summary:\n${document.querySelectorAll('pre code')[1].textContent}\n\nKeywords:\n${document.querySelector('p.bg-gray-900').textContent}`;
+            navigator.clipboard.writeText(text).then(() => alert("Results copied to clipboard!"));
+        }
+    </script>
+</body>
+</html>

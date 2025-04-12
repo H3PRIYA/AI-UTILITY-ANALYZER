@@ -1,0 +1,22 @@
+/* Custom styles for AI Text Utility */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 300px;
+}
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+[data-theme="dark"] .bg-white {
+    background-color: #1f2937;
+}
+[data-theme="dark"] .text-gray-800 {
+    color: #d1d5db;
+}
+[data-theme="dark"] .text-indigo-600 {
+    color: #bfdbfe;
+}
